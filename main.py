@@ -5,8 +5,7 @@ import json
 
 app = FastAPI()
 
-with open('bible.json', "r") as f:
-        data = json.load(f)
+
    
 
 @app.get("/")
@@ -16,6 +15,8 @@ async def root():
 
 @app.get("/chapitre/{id}")
 def read_item(id):
+    with open('bible.json', "r") as f:
+        data = json.load(f)
     id= int(id)
     chapter =[]
     long= len(data['Testaments'][0]['Books'][0]["Chapters"][id]['Verses'])
@@ -26,6 +27,8 @@ def read_item(id):
 
 @app.get("/livres/{id}")
 def read_item(id):
+    with open('bible.json', "r") as f:
+        data = json.load(f)
     id= int(id)
     chapter =[]
     long= len(data['Testaments'][id]['Books'])
@@ -36,6 +39,8 @@ def read_item(id):
 
 @app.get("/testament/{id}")
 def read_item(id):
+    with open('bible.json', "r") as f:
+        data = json.load(f)
     id= int(id)
 
     chapter =[]
